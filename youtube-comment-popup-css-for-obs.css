@@ -1,0 +1,186 @@
+/* 調整用の変数たち */
+:root {
+    --font-family: "LINE Seed JP_OTF";
+    --font-weight: bold;
+    --color-message: #7691c6;
+    --color-username: #33cefd;
+    --color-text-stroke: #ffffff;
+    --color-text-shadow: #000000;
+    --color-message-box-background: #205cd2a3;
+    --width-icon-border: 2px;
+}
+
+
+
+/* 背景を透明にする */
+html,
+body,
+yt-live-chat-renderer {
+    background-color: transparent;
+}
+
+/* デバッグ用に色を変える */
+html.debug {
+    background-color: gray;
+    background-image: url("https://pbs.twimg.com/media/GZDR67DbwAA_XCj?format=jpg&name=900x900");
+}
+
+
+
+/* スクロールバーを消すよ */
+#item-scroller {
+    /*上下方向にはみ出した要素ををスクロールさせる*/
+    overflow-y: scroll;
+    /*スクロールバー非表示（IE・Edge）*/
+    -ms-overflow-style: none;
+    /*スクロールバー非表示（Firefox）*/
+    scrollbar-width: none;
+}
+/*スクロールバー非表示（Chrome・Safari）*/
+#item-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* いらんものを消すよ */
+yt-live-chat-header-renderer,
+yt-live-chat-viewer-engagement-message-renderer,
+#panel-pages,
+body>#content {
+    display: none;
+}
+
+#timestamp {
+    display: none !important;
+}
+
+
+
+/* チャットの表示領域をいっぱいにする */
+#item-offset {
+    height: 100% !important;
+}
+
+
+
+/* チャットの色とか */
+#author-name {
+    color: var(--color-username) !important;
+}
+yt-live-chat-author-chip {
+    flex: 0 1 auto;
+    max-width: 50%;
+    min-width: 3em;
+}
+#message {
+    display: inline-flex;
+    padding-top: 3px;
+    color: var(--color-message) !important;
+    
+    flex: 1 0 auto;
+}
+
+#content {
+    display: inline-flex;
+    text-shadow: 0px 1px var(--color-text-stroke),
+                 1px 0px var(--color-text-stroke),
+                 0px -1px var(--color-text-stroke),
+                 -1px 0px var(--color-text-stroke),
+                 0px 0px 6px var(--color-text-shadow);
+}
+
+* {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+
+    overflow-wrap: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+}
+
+
+
+/* アイコン */
+#author-photo {
+    background-color: var(--color-text-stroke) !important;
+    border: var(--width-icon-border) solid var(--color-text-stroke);
+    margin-right: 6px !important;
+}
+
+
+
+
+
+/* チャット１こ１こに枠をつける */
+yt-live-chat-text-message-renderer {
+    background-color: var(--color-message-box-background);
+    border-radius: 100vw;
+    width: fit-content;
+    padding-inline: 15px;
+    margin-block: 8px;
+    margin-inline: 4px;
+}
+
+
+
+
+
+/* 出現アニメーション */
+@keyframes appear-icon {
+    0%   { transform: translateX(-8px) rotateY(-90deg); }
+    100% { transform: translateX(0px)  rotateY(720deg); }
+}
+#author-photo {
+    animation-name: appear-icon;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.21, 0.78, 0.55, 0.95);
+    animation-fill-mode: both;
+    z-index: 9999;
+}
+
+@keyframes appear-username {
+    0%   { transform: translateX(-24px); opacity: 0; letter-spacing: -8px; }
+    100% { transform: translateX(0px);   opacity: 1; letter-spacing: 0px; }
+}
+#author-name {
+    animation-name: appear-username;
+    animation-duration: 0.8s;
+    animation-delay: 0.1158s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.22, 1.82, 0.4, 0.84);
+    animation-fill-mode: both;
+}
+
+@keyframes appear-message {
+    0%   { transform: translateX(-36px) scaleX(0.5); opacity: 0; letter-spacing: -8px; }
+    100% { transform: translateX(0px)   scaleX(1);   opacity: 1; letter-spacing: 0px; }
+}
+#message {
+    transform-origin: left;
+    animation-name: appear-message;
+    animation-duration: 0.8s;
+    animation-delay: 0.2316s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.22, 1.82, 0.4, 0.84);
+    animation-fill-mode: both;
+    display: block;
+}
+
+@keyframes appear-background {
+    0%   { background-position-x: 67%; margin-top: -56px; }
+    100% { background-position-x: 33%; margin-top: 0px; }
+}
+yt-live-chat-text-message-renderer {
+    transform-origin: left;
+    animation-name: appear-background;
+    animation-duration: 1.0s;
+    animation-delay: 0.05s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.39, 0, 0.01, 1);
+    animation-fill-mode: both;
+
+    background: linear-gradient(to right, var(--color-message-box-background) 50%, transparent 50%);
+    background-size: 400% 100%;
+}

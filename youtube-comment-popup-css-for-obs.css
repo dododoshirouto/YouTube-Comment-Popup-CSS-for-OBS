@@ -15,7 +15,9 @@
 /* 背景を透明にする */
 html,
 body,
-yt-live-chat-renderer {
+yt-live-chat-renderer,
+yt-live-chat-message-renderer /* 無効な配信って警告画面の背景 */
+{
     background-color: transparent;
 }
 
@@ -47,7 +49,9 @@ html.debug {
 yt-live-chat-header-renderer,
 yt-live-chat-viewer-engagement-message-renderer,
 #panel-pages,
-body>#content {
+body>#content,
+yt-formatted-string /* 無効な配信って警告画面の文字 */
+{
     display: none;
 }
 

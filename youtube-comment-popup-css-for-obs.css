@@ -85,6 +85,7 @@ yt-live-chat-author-chip {
     color: var(--color-message) !important;
     
     flex: 1 0 auto;
+    flex-shrink: 1;
 }
 
 #content {

@@ -71,11 +71,13 @@ yt-formatted-string /* 無効な配信って警告画面の文字 */
 /* チャットの色とか */
 #author-name {
     color: var(--color-username) !important;
+    flex-shrink: 0;
 }
 yt-live-chat-author-chip {
     flex: 0 1 auto;
     max-width: 50%;
     min-width: 3em;
+    align-items: center;
 }
 #message {
     display: inline-flex;

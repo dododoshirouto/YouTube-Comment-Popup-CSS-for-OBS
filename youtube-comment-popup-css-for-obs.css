@@ -8,6 +8,7 @@
     --color-text-shadow: #000000;
     --color-message-box-background: #205cd2a3;
     --width-icon-border: 2px;
+    --emoji-reaction-scale: 2;
 }
 
 
@@ -48,7 +49,7 @@ html.debug {
 /* いらんものを消すよ */
 yt-live-chat-header-renderer,
 yt-live-chat-viewer-engagement-message-renderer,
-#panel-pages,
+/* #panel-pages, */
 body>#content,
 yt-formatted-string /* 無効な配信って警告画面の文字 */
 {
@@ -59,6 +60,18 @@ yt-formatted-string /* 無効な配信って警告画面の文字 */
     display: none !important;
 }
 
+/* リアクション絵文字だけ表示する */
+#panel-pages {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+#emoji-fountain {
+    visibility: visible;
+    transform-origin: bottom right;
+    transform: scale(var(--emoji-reaction-scale)) !important;
+}
 
 
 /* チャットの表示領域をいっぱいにする */
